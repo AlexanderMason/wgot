@@ -25,11 +25,11 @@ int main(int argc, char *argv[])
   {
 
     time_t clock;
-    char buffy[26];
+    char datetime[26];
     struct tm* clock_out;
     time(&clock);
     clock_out = localtime(&clock);
-    strftime(buffy, 26, "%Y-%m-%d %H:%M:%S", clock_out);
+    strftime(datetime, 26, "%Y-%m-%d %H:%M:%S", clock_out);
     srand(time(NULL));
     int rando = rand() % 500 + 12;
     char *urlfile;
@@ -42,10 +42,10 @@ int main(int argc, char *argv[])
     //commence logging
     FILE *fileptr;
     fileptr = fopen(logpath, "a");
-    fprintf(fileptr, "%s - Wget attempt to pull down: %s/%s\n", buffy, domain, urlfile);
+    fprintf(fileptr, "%s - Wget attempt to pull down: %s/%s\n", datetime, domain, urlfile);
     fclose(fileptr);
  
-    printf("--%s-- %s/%s\n", buffy, domain, urlfile);
+    printf("--%s-- %s/%s\n", datetime, domain, urlfile);
     sleep(3);
     printf("Connecting to %s:80... connected.\n", domain);
     sleep(7);
