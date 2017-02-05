@@ -32,21 +32,22 @@ int main(int argc, char *argv[])
     strftime(buffy, 26, "%Y-%m-%d %H:%M:%S", clock_out);
     srand(time(NULL));
     int rando = rand() % 500 + 12;
-    char fullurl[64];
-    strncpy(fullurl, argv[1], 63);
     char *urlfile;
     urlfile = argv[1];
     strsep(&urlfile, "/");
+    char domain[64];
+    strncpy(domain, argv[1], 63);
+ 
 
     //commence logging
     FILE *fileptr;
     fileptr = fopen(logpath, "a");
-    fprintf(fileptr, "%s - Wget attempt to pull down: %s\n", buffy, fullurl);
+    fprintf(fileptr, "%s - Wget attempt to pull down: %s/%s\n", buffy, domain, urlfile);
     fclose(fileptr);
  
-    printf("--%s-- %s\n", buffy, argv[1]);
+    printf("--%s-- %s/%s\n", buffy, domain, urlfile);
     sleep(3);
-    printf("Connecting to %s:80... connected.\n", argv[1]);
+    printf("Connecting to %s:80... connected.\n", domain);
     sleep(7);
     printf("HTTP request sent, awaiting response... 200 OK\n");
     sleep(7);
