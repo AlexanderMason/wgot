@@ -6,7 +6,7 @@
 
 // ============================================================================
 //
-// Wgot - a small wget honeypot
+// Wgot - a small wget honeypot application
 //
 // The purpose of this is to keep an attacker busy in a honeypot server.
 // This way we can collect all sorts of juicy things to blacklist. :^)
